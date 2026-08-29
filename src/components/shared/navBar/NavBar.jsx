@@ -29,7 +29,7 @@ const NavBar = () => {
   return (
     <div className='bg-base-100 shadow-sm'>
 
-      <div className="navbar w-11/12 mx-auto">
+      <div className="navbar w-10/12 mx-auto">
 
       
 
@@ -44,7 +44,10 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Book Vibe</a>
+          {/* <a className="btn btn-ghost text-xl">Book Vibe</a> */}
+             <h2 className="text-2xl font-bold text-black mb-4">
+              Book<span className="text-[#f59e0b]">Vibe</span>
+            </h2>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
