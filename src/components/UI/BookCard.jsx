@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const BookCard = ({ book }) => {
     return (
 
-        <div>
+        <Link to={`/bookDetails/${book.bookId}`}>
 
             {/* Full Card START */}
             <div className='border border-gray-500 rounded-2xl p-8'>
@@ -46,7 +47,7 @@ const BookCard = ({ book }) => {
             </div>
             {/* Full Card END */}
 
-        </div>
+        </Link>
     );
 };
 
