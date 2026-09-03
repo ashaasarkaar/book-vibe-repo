@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BookContext } from '../../Context/BookContext';
+
+
 
 const Books = () => {
+    const {storedBook} = useContext(BookContext);
+    console.log("ListedBook", storedBook)
     return (
         <div>
-            <h1>books</h1>
+            <h1>Listed books</h1>
         </div>
     );
 };
