@@ -1,10 +1,15 @@
 import React from 'react';
 import { FaFileAlt, FaUserFriends } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
+import EmptyWishlist from './EmptyListedBooks/EmptyWishlist';
 
 
 const ListedWishListBooks = ({wishBook}) => {
      const{image, bookName, author, tags, yearOfPublishing, publisher, totalPages, rating, category} = wishBook;
+
+     if(wishBook.length === 0){
+        return <EmptyWishlist></EmptyWishlist>
+     }
     return (
        <div className='border-2 border-gray-300 rounded-2xl mt-8'>
                   <div className='flex items-center gap-20 p-5'>

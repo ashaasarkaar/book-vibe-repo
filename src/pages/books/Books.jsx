@@ -4,6 +4,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ListedReadListBooks from '../../components/listedBooks/ListedReadListBooks';
 import ListedWishListBooks from '../../components/listedBooks/ListedWishListBooks';
+import EmptyWishlist from '../../components/listedBooks/EmptyListedBooks/EmptyWishlist';
+import EmptyReadList from '../../components/listedBooks/EmptyListedBooks/EmptyReadList';
 
 
 
@@ -22,20 +24,33 @@ const Books = () => {
                 </TabList>
 
                 <TabPanel>
-                    <div>
+                    {
+                        readListBook.length === 0 ? (
+                        <EmptyReadList/>
+                        ) : (
+                              <div>
                         {
                             readListBook.map((readBook, index) => <ListedReadListBooks readBook={readBook} key={index}></ListedReadListBooks>
                             )
                         }
                     </div>
+                        )
+                        
+                    }
+                  
                 </TabPanel>
                 <TabPanel>
-                     <div>
+                    {
+                        wishListBook.length === 0 
+                        ? <EmptyWishlist/>
+                        :  <div>
                         {
                             wishListBook.map((wishBook, index) => <ListedWishListBooks wishBook={wishBook} key={index}></ListedWishListBooks>
                             )
                         }
                     </div>
+                    }
+                    
                 </TabPanel>
             </Tabs>
 
