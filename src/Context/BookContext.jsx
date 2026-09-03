@@ -8,26 +8,26 @@ export const BookContext = createContext()
 const BookProvider = ({children}) => {
 
     
-    const[storedBook, setStoredBook] = useState([])
+    const[readListBook, setReadListBook] = useState([])
     const[wishListBook, setWishListBook] = useState([])
 
   const handleMarkAsRead = (currentBook)=>{
     
-    const isExistBook = storedBook.find(existBook => existBook.bookId === currentBook.bookId)
+    const isExistBook = readListBook.find(existBook => existBook.bookId === currentBook.bookId)
 
    if(isExistBook){
     toast.error("This Book Is Already in Read List")
    }
    else{
-      setStoredBook([...storedBook, currentBook])
+      setReadListBook([...readListBook, currentBook])
       toast.success(`${currentBook.bookName} is Added to Read List`)
    }
-   console.log("read Book",  currentBook, "Stored Book", storedBook)
+   console.log("read Book",  currentBook, "Stored Book", readListBook)
   }
 
   const handleWishListBook = (currentBook)=>{
     
-    const isExistBookInReadList = storedBook.find(existBook => existBook.bookId === currentBook.bookId)
+    const isExistBookInReadList = readListBook.find(existBook => existBook.bookId === currentBook.bookId)
 
    if(isExistBookInReadList){
     toast.error("This Book Is Already Exist in Read List")
@@ -41,12 +41,12 @@ const BookProvider = ({children}) => {
       setWishListBook([...wishListBook, currentBook])
       toast.success(`${currentBook.bookName} is Added to Wish List`)
    }
-   console.log("read Book",  currentBook, "Stored Book", storedBook, "Wish Listed Book", wishListBook)
+   console.log("read Book",  currentBook, "Stored Book", readListBook, "Wish Listed Book", wishListBook)
   }
 
   const data ={
-    storedBook, 
-    setStoredBook,
+    readListBook, 
+    setReadListBook,
     handleMarkAsRead,
     wishListBook,
     setWishListBook,

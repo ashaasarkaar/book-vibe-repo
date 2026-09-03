@@ -32,7 +32,7 @@ const BookDetails = () => {
   } = expectedBook;
 
    const {handleMarkAsRead, handleWishListBook} = useContext(BookContext);
-  console.log("handleMarkASRead", handleMarkAsRead)
+  // console.log("handleMarkASRead", handleMarkAsRead)
   
   return (
 
