@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaFileAlt, FaUserFriends } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
+import { BookContext } from '../../Context/BookContext';
 
 
-const ListedReadListBooks = ({ readBook }) => {
+const ListedReadListBooks = ({ readBook, sortingType, setFilteredReadListBook }) => {
+
+     const { readListBook } = useContext(BookContext);
     const { image, bookName, author, tags, yearOfPublishing, publisher, totalPages, rating, category } = readBook;
+
+     useEffect(()=>{
+
+        if(sortingType){
+            if(sortingType === 'Pages'){
+                const sortedData = [... readListBook].sort((a,b)=>a.totalPages - b.totalPages)
+                 setFilteredReadListBook(sortedData)
+            }
+            else if(sortingType === 'Rating'){
+                const sortedData = [... readListBook].sort((a,b)=>a.rating - b.rating)
+                 setFilteredReadListBook(sortedData)
+            }
+           
+        }
+
+    },[sortingType, readListBook, setFilteredReadListBook])
+  
+
+
     return (
         <div className='border-2 border-gray-300 rounded-2xl mt-8'>
             <div className='flex items-center gap-20 p-5'>
