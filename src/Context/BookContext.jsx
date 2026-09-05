@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { toast } from 'react-toastify';
+import { addReadListBookToLocalDB, getAllReadListBookFromLocalDB } from '../utils/localDB';
 
 export const BookContext = createContext()
 
@@ -8,12 +9,16 @@ export const BookContext = createContext()
 const BookProvider = ({children}) => {
 
     
-    const[readListBook, setReadListBook] = useState([])
+    const[readListBook, setReadListBook] = useState(()=>getAllReadListBookFromLocalDB())
     const[wishListBook, setWishListBook] = useState([])
 
   const handleMarkAsRead = (currentBook)=>{
+
+    addReadListBookToLocalDB(currentBook);
     
     const isExistBook = readListBook.find(existBook => existBook.bookId === currentBook.bookId)
+
+
 
    if(isExistBook){
     toast.error("This Book Is Already in Read List")
